@@ -6,18 +6,32 @@
                 <thead>
                     <tr>
                         <th>No.</th>
-                        <th>Nama</th>
-                        <th>Nik</th>
+                        <th>Username</th>
+                        <th>Role</th>
                         <th>Edit</th>
                         <th>Hapus</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>R1C1</td>
-                        <td>R1C2</td>
-                        <td>R1C3</td>
-                    </tr>
+                    @foreach ($users as $user)
+                        <tr>
+                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $user->username }}</td>
+                            <td>{{ $user->role }}</td>
+                            <td>
+                                <x-link :url="url('user/'.$user->id.'/edit')" />
+                            </td>
+                            <td>
+                                <form action="{{ url('user/',$user->id)  }}" method="post">
+                                    @csrf
+                                    @method('delete')
+                                    <button class="btn btn-outline-danger">
+                                        <i class="bi-trash"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

@@ -237,13 +237,13 @@
         <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
           <ul class="nav flex-column ">
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2 aktif" aria-current="page" href="#">
+              <a class="{{ Request::is('dashboard') ? 'aktif' : '' }} nav-link d-flex align-items-center gap-2" href="{{ url('dashboard') }}">
                 <i class="bi-house"></i>
                 Dashboard
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
+              <a class="{{ Request::is('user') ? 'aktif' : '' }} nav-link d-flex align-items-center gap-2" href="{{ url('user') }}">
                <i class="bi-people"></i>
                 Admin
               </a>
