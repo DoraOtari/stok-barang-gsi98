@@ -6,12 +6,13 @@ use Illuminate\View\Component;
 
 class Input extends Component
 {
-    public $label, $tipe;
+    public $label, $tipe, $datax;
 
-    public function __construct($label, $tipe)
+    public function __construct($label, $tipe, $datax = null)
     {
         $this->label = $label;
         $this->tipe  = $tipe;
+        $this->datax  = $datax;
     }
 
     /**

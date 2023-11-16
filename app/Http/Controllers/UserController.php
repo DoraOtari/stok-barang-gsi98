@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -22,7 +23,7 @@ class UserController extends Controller
 
         User::create([
             'username' => $request->username,
-            'password' => $request->password,
+            'password' => Hash::make($request->password),
             'role' => $request->role,
         ]); // perintah untuk memasukan data ke tabel user
 
@@ -35,9 +36,9 @@ class UserController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(User $user)
     {
-        //
+        return view('page.users.edit', compact('user'));
     }
 
     public function update(Request $request, $id)
@@ -47,6 +48,8 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect('user')->with('pesan', 'Berhasil hapus user')
+                                ->with('warna', 'danger');
     }
 }

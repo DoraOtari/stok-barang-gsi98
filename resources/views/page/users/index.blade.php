@@ -1,5 +1,8 @@
 @extends('layouts.admin')
 @section('konten')
+    @if (session('pesan'))
+        <x-notif :pesan="session('pesan')" :warna="session('warna')" />
+    @endif
     <x-card judul="Data User">
         <div class="table-responsive">
             <table class="table">
@@ -22,7 +25,7 @@
                                 <x-link :url="url('user/'.$user->id.'/edit')" />
                             </td>
                             <td>
-                                <form action="{{ url('user/',$user->id)  }}" method="post">
+                                <form action="{{ url('user',$user->id)  }}" method="post">
                                     @csrf
                                     @method('delete')
                                     <button class="btn btn-outline-danger">
