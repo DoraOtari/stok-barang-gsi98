@@ -222,8 +222,8 @@
     </li>
   </ul>
 
-  <div id="navbarSearch" class="navbar-search w-100 collapse">
-    <input class="form-control w-100 rounded-0 border-0" type="text" placeholder="Search" aria-label="Search">
+  <div class="me-2">
+    <b style="color: cornsilk">{{ Auth::user()->username }}</b>
   </div>
 </header>
 
@@ -318,10 +318,13 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <svg class="bi"><use xlink:href="#door-closed"/></svg>
-                Sign out
-              </a>
+              <form action="{{ url('logout') }}" method="POST">
+                @csrf
+                <button style="color: brown" class="nav-link d-flex align-items-center gap-2" type="submit">
+                  <svg class="bi"><use xlink:href="#door-closed"/></svg>
+                  Sign out
+                </button>
+              </form>
             </li>
           </ul>
         </div>

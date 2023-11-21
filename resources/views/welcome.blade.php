@@ -23,7 +23,8 @@
                         {{-- kolom 2 --}}
                         <div class="col-md-5">
                             {{-- form login --}}
-                            <form action="" method="post">
+                            <form action="/otentikasi" method="post">
+                                @csrf
                                 <x-input tipe="text" label="username" />
                                 <x-input tipe="password" label="password" />
                                 <x-button warna="success" label="Sign In" />
