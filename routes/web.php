@@ -7,4 +7,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::view('/dashboard', 'page.dashboard');
+
 Route::resource('user', UserController::class);

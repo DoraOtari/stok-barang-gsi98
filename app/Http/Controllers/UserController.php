@@ -43,7 +43,23 @@ class UserController extends Controller
 
     public function update(Request $request, $id)
     {
-        //
+        $user= User::find($id); //menemukan user berdasarkan id
+        
+        if (Hash::check($request->password_lama, $user->password)) {
+            User::where('id', $id)->update(
+                [
+                    'username' => $request->username,
+                    'password' => $request->password_baru,
+                ]
+                ); //perintah update data pada tabel user
+
+            return redirect('user')->with('pesan', "berhasil update data $request->username")
+                                    ->with('warna', 'success'); //perintah untuk mengembalikan pesan berhasil
+        } else {
+            return redirect('user')->with('pesan', "password lama tidak sama")
+            ->with('warna', 'warning'); //perintah untuk mengembalikan pesan gagal
+
+        } //cek apakah password lama sesuai dengan password yang baru
     }
 
     public function destroy($id)

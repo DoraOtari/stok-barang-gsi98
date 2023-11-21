@@ -4,6 +4,11 @@
         <x-notif :pesan="session('pesan')" :warna="session('warna')" />
     @endif
     <x-card judul="Data User">
+        <x-slot name="tombol">
+            <x-link :url="url('user/create')">
+                <i class="bi-plus"></i> Buat
+            </x-link>
+        </x-slot>
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -22,7 +27,9 @@
                             <td>{{ $user->username }}</td>
                             <td>{{ $user->role }}</td>
                             <td>
-                                <x-link :url="url('user/'.$user->id.'/edit')" />
+                                <x-link :url="url('user/'.$user->id.'/edit')" >
+                                    <i class="bi-pen"></i>
+                                </x-link>
                             </td>
                             <td>
                                 <form action="{{ url('user',$user->id)  }}" method="post">

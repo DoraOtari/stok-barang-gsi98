@@ -101,6 +101,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="https://getbootstrap.com/docs/5.3/examples/dashboard/dashboard.css" rel="stylesheet">
+    @stack('css')
   </head>
   <body>
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
