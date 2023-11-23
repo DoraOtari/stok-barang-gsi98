@@ -250,9 +250,9 @@
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link d-flex align-items-center gap-2" href="#">
+              <a class="{{ Request::is('stok') ? 'aktif' : '' }} nav-link d-flex align-items-center gap-2" href="{{ url('stok') }}">
                 <i class="bi-box2-heart"></i>
-                Produk
+                Stok
               </a>
             </li>
             <li class="nav-item">

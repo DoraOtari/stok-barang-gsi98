@@ -9,9 +9,14 @@
 @endpush
 @section('konten')
     <section id="bungkus" class="vh-100">
-        <div class="d-grid align-items-center h-100">
+        <div class="d-grid col-md-8 mx-auto">
             {{-- kartu --}}
-            <div class="card col-md-8 mx-auto shadow">
+            <div style="height: 50px">
+                @if (session('pesan'))
+                        <x-notif :pesan="session('pesan')" :warna="session('warna')" />
+                @endif
+            </div>
+            <div class="card  shadow mt-md-4">
                 <div class="card-body">
                     <h3 class="card-title my-0 fw-bold">Sign In</h3>
                     <small class="card-subtitle text-muted">Silahkan login menggunakan username dan password anda</small>
@@ -26,6 +31,9 @@
                             <form action="/otentikasi" method="post">
                                 @csrf
                                 <x-input tipe="text" label="username" />
+                                @error('username')
+                                    <small>{{ $message }}</small>
+                                @enderror
                                 <x-input tipe="password" label="password" />
                                 <x-button warna="success" label="Sign In" />
                             </form>

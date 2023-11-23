@@ -19,7 +19,8 @@ class LoginController extends Controller
             return redirect()->intended('dashboard');
         }
 
-        return redirect()->back()->with('pesan', 'Gagal Login ! username atau password tidak sama');
+        return redirect()->back()->with('pesan', 'Gagal Login ! username atau password tidak sama')
+                ->with('warna','light');
     }
 
     public function logout(Request $req) {
