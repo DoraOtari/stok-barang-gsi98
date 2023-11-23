@@ -6,11 +6,12 @@ use Illuminate\View\Component;
 
 class Button extends Component
 {
-    public $warna, $label;
-    public function __construct($warna, $label)
+    public $warna, $label, $tipe;
+    public function __construct($warna, $label, $tipe)
     {
         $this->warna = $warna;
         $this->label = $label;
+        $this->tipe = $tipe;
     }
 
     /**
